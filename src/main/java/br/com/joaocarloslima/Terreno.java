@@ -24,7 +24,7 @@ public class Terreno {
         if (!estaOcupado()) this.morango = morango;
     }
 
-    public void colher(Celeiro celeiro) {
+    public void colher(Celeiro celeiro) throws Exception {
         if (batata != null && batata.podeColher()) {
             celeiro.armazenarBatata();
             batata = null;
@@ -40,5 +40,25 @@ public class Terreno {
 
     public boolean estaOcupado() {
         return batata != null || cenoura != null || morango != null;
+    }
+
+    public int getX() {
+        return x;
+    }
+
+    public int getY() {
+        return y;
+    }
+
+    public Batata getBatata() {
+        return batata;
+    }
+
+    public Morango getMorango() {
+        return morango;
+    }
+
+    public Cenoura getCenoura() {
+        return cenoura;
     }
 }
