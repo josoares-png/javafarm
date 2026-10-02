@@ -18,7 +18,7 @@ import javafx.scene.layout.GridPane;
 
 public class Controller implements Initializable {
 
-    // private Fazenda fazenda = new Fazenda();
+     private Fazenda fazenda = new Fazenda();
     private List<ImageView> imageTerrenos = new ArrayList<>();
     private int sleepTime = 3000;
 
@@ -36,7 +36,7 @@ public class Controller implements Initializable {
     ProgressBar ocupacaoDoCeleiro;
     @FXML
     CheckBox ckbAcelerar;
-    private Fazenda fazenda;
+
 
 
     public void atualizar() throws Exception {
@@ -96,14 +96,14 @@ public class Controller implements Initializable {
                          try {
                              ciclo();
                          } catch (Exception e) {
-                             throw new RuntimeException(e);
+
                          }
                      });
                      atualizar();
                  } catch (InterruptedException e) {
                      e.printStackTrace();
                  } catch (Exception e) {
-                     throw new RuntimeException(e);
+
                  }
              }
          });
@@ -151,7 +151,7 @@ public class Controller implements Initializable {
         try {
             atualizar();
         } catch (Exception e) {
-            throw new RuntimeException(e);
+
         }
         clockThread();
 

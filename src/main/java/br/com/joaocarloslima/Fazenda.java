@@ -28,22 +28,24 @@ public class Fazenda {
                 return  terreno;
             }
         }
-        throw new Exception("Coordenadas fora do lismites do terrono");
+        throw new Exception("Coordenadas fora do limites do terreno");
     }
 
     public void plantarBatata(int x, int y) throws Exception {
-        celeiro.consumirBatata();
         getTerreno(x, y).plantar(new Batata(3));
+        celeiro.consumirBatata();
     }
 
     public void plantarCenoura(int x, int y) throws Exception {
-        celeiro.consumirCenoura();
         getTerreno(x, y).plantar(new Cenoura(3));
+        celeiro. consumirCenoura();
+
     }
 
     public void plantarMorango(int x, int y) throws Exception {
-        celeiro.consumirMorango();
         getTerreno(x, y).plantar(new Morango(3));
+        celeiro.consumirMorango();
+
     }
 
     public void colher(int x, int y) throws Exception {
