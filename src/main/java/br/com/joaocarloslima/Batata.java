@@ -6,7 +6,7 @@ public class Batata {
     private int tempoDeVida;
     private int tempoDeCrescimento;
 
-    public Batata(int tamanho, int tempoDeVida, int tempoDeCrescimento){
+    public Batata(int tamanho){
         this.tamanho = tamanho;
         this.tempoDeVida = tempoDeVida;
         this.tempoDeCrescimento = tempoDeCrescimento;

@@ -6,7 +6,7 @@ public class Cenoura {
     private int tempoDeVida;
     private int tempoDeCrescimento;
 
-    public Cenoura(int tamanho, int tempoDeVida, int tempoDeCrescimento){
+    public Cenoura(int tamanho){
         this.tamanho = tamanho;
         this.tempoDeVida = tempoDeVida;
         this.tempoDeCrescimento = tempoDeCrescimento;

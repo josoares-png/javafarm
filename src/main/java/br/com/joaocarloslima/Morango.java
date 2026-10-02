@@ -6,7 +6,7 @@ public class Morango {
     private int tempoDeVida;
     private int tempoDeCrescimento;
 
-    public Morango(int tamanho, int tempoDeVida, int tempoDeCrescimento){
+    public Morango(int tamanho){
         this.tamanho = tamanho;
         this.tempoDeVida = tempoDeVida;
         this.tempoDeCrescimento = tempoDeCrescimento;
