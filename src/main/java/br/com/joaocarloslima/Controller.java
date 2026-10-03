@@ -18,7 +18,7 @@ import javafx.scene.layout.GridPane;
 
 public class Controller implements Initializable {
 
-     private Fazenda fazenda = new Fazenda();
+    private Fazenda fazenda = new Fazenda();
     private List<ImageView> imageTerrenos = new ArrayList<>();
     private int sleepTime = 3000;
 

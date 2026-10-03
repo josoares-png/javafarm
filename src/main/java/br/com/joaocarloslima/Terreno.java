@@ -13,15 +13,15 @@ public class Terreno {
     }
 
     public void plantar(Batata batata) {
-        if (!estaOcupado()) this.batata = batata;
+        this.batata = batata;
     }
 
     public void plantar(Cenoura cenoura) {
-        if (!estaOcupado()) this.cenoura = cenoura;
+        this.cenoura = cenoura;
     }
 
     public void plantar(Morango morango) {
-        if (!estaOcupado()) this.morango = morango;
+         this.morango = morango;
     }
 
     public void colher(Celeiro celeiro) throws Exception {
