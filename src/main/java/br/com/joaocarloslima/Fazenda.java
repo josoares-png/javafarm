@@ -28,12 +28,15 @@ public class Fazenda {
                 return  terreno;
             }
         }
-        throw new Exception("Coordenadas fora do limites do terreno");
+        return null;
     }
 
     public void plantarBatata(int x, int y) throws Exception {
-        getTerreno(x, y).plantar(new Batata(3));
-        celeiro.consumirBatata();
+        Terreno terreno = getTerreno(x,y);
+        if (terreno != null && !terreno.estaOcupado() &&celeiro.getQtdeBatatas() > 0){
+            celeiro.consumirBatata();
+            terreno.plantar(new Batata());
+        }
     }
 
     public void plantarCenoura(int x, int y) throws Exception {

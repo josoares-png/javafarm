@@ -9,9 +9,9 @@ public class Celeiro {
 
     public Celeiro(int capacidade) {
         this.capacidade = capacidade;
-        this.qtdeBatatas = 5;
-        this.qtdeCenouras = 5;
-        this.qtdeMorangos = 5;
+        this.qtdeBatatas = 2;
+        this.qtdeCenouras = 2;
+        this.qtdeMorangos = 2;
     }
 
     public void armazenarBatata() throws Exception {

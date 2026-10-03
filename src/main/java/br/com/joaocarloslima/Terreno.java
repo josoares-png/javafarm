@@ -24,6 +24,10 @@ public class Terreno {
          this.morango = morango;
     }
 
+    public boolean estaOcupado() {
+        return batata != null || cenoura != null || morango != null;
+    }
+
     public void colher(Celeiro celeiro) throws Exception {
         if (batata != null && batata.podeColher()) {
             celeiro.armazenarBatata();
@@ -36,10 +40,6 @@ public class Terreno {
             morango = null;
         }
 
-    }
-
-    public boolean estaOcupado() {
-        return batata != null || cenoura != null || morango != null;
     }
 
     public int getX() {
