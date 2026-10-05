@@ -1,7 +1,6 @@
 package br.com.joaocarloslima;
 
 public class Celeiro {
-
     private int capacidade;
     private int qtdeBatatas;
     private int qtdeCenouras;
@@ -9,66 +8,69 @@ public class Celeiro {
 
     public Celeiro(int capacidade) {
         this.capacidade = capacidade;
-        this.qtdeBatatas = 0;
-        this.qtdeCenouras = 0;
-        this.qtdeMorangos = 0;
+        this.qtdeBatatas = 5;
+        this.qtdeCenouras = 5;
+        this.qtdeMorangos = 5;
     }
 
-    public void armazenarBatata() throws Exception {
+    public void armazenarBatata() {
         if (getEspacoDisponivel() < 2) {
-            throw new Exception("Celeiro cheio!!!");
+            throw new IllegalStateException("Celeiro cheio!");
         }
-        this.qtdeBatatas +=2;
+        this.qtdeBatatas += 2;
     }
 
-    public void armazenarCenoura() throws Exception {
+    public void armazenarCenoura() {
         if (getEspacoDisponivel() < 2) {
-            throw new Exception("Celeiro cheio!!!");
+            throw new IllegalStateException("Celeiro cheio!");
         }
-        this.qtdeCenouras +=2;
+        this.qtdeCenouras += 2;
     }
 
-    public void armazenarMorango() throws Exception {
+    public void armazenarMorango() {
         if (getEspacoDisponivel() < 2) {
-            throw new Exception("Celeiro cheio!!!");
+            throw new IllegalStateException("Celeiro cheio!");
         }
-        this.qtdeMorangos +=2;
+        this.qtdeMorangos += 2;
     }
 
-    public void consumirBatata() throws Exception{
-        if (this.qtdeBatatas <= 0){
-            throw new Exception("Não há batatas suficientes para consumir");
+    public void consumirBatata() {
+        if (this.qtdeBatatas < 1) {
+            throw new IllegalStateException("Faltam batatas!");
         }
-        this.qtdeBatatas --;
+        this.qtdeBatatas--;
     }
 
-    public void consumirCenoura() throws Exception{
-        if (this.qtdeCenouras <= 0){
-            throw new Exception("Não há cenouras suficientes para consumir");
+    public void consumirCenoura() {
+        if (this.qtdeCenouras < 1) {
+            throw new IllegalStateException("Faltam cenouras!");
         }
-        this.qtdeCenouras --;
+        this.qtdeCenouras--;
     }
 
-    public void consumirMorango() throws Exception{
-        if (this.qtdeMorangos <= 0){
-            throw new Exception("Não há morangos suficientes para consumir");
+    public void consumirMorango() {
+        if (this.qtdeMorangos < 1) {
+            throw new IllegalStateException("Faltam morangos!");
         }
-        this.qtdeMorangos --;
+        this.qtdeMorangos--;
     }
 
-    public int getEspacoDisponivel(){
+    public int getEspacoDisponivel() {
         return capacidade - (qtdeBatatas + qtdeCenouras + qtdeMorangos);
     }
 
-    public double getOcupacao(){
-        return ((double) (qtdeMorangos + qtdeCenouras + qtdeBatatas) / capacidade) * 100;
+    public int getOcupacao() {
+        int totalOcupado = qtdeBatatas + qtdeCenouras + qtdeMorangos;
+        return (totalOcupado / capacidade) * 100;
     }
 
-    public boolean celeiroCheio(){
-        return getOcupacao() <=0;
+    public boolean celeiroCheio() {
+        return (getQtdeBatatas() + getQtdeMorangos() +getQtdeCenouras() >= getCapacidade());
     }
 
-
+    public int getCapacidade() {
+        return capacidade;
+    }
 
     public int getQtdeBatatas() {
         return qtdeBatatas;
@@ -81,4 +83,6 @@ public class Celeiro {
     public int getQtdeMorangos() {
         return qtdeMorangos;
     }
+
+
 }

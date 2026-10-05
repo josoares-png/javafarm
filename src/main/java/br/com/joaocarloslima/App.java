@@ -23,6 +23,8 @@ public class App extends Application {
         stage.setResizable(false);
         stage.getIcons().add(new Image("file:src/main/resources/br/com/joaocarloslima/images/icon.png"));
 
+
+
         stage.setScene(scene);
         stage.show();
     }

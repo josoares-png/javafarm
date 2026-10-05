@@ -4,54 +4,66 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Fazenda {
-
     private List<Terreno> terrenos;
     private Celeiro celeiro;
 
-    private final int Linhas = 13;
-    private final int Colunas = 13;
-
     public Fazenda(){
-        this.celeiro = new Celeiro(100);
         this.terrenos = new ArrayList<>();
+        this.celeiro = new Celeiro(50);
 
-        for(int x = 0; x < Linhas; x++) {
-            for(int y = 0; y < Colunas; y++){
-                this.terrenos.add(new Terreno(x, y));
+        for (int i = 0; i < 13; i++) {
+            for (int j = 0; j < 13; j++) {
+                this.terrenos.add(new Terreno(i, j));
             }
         }
     }
 
-    public Terreno getTerreno(int x, int y) throws Exception {
-        for(Terreno terreno : terrenos){
-            if (terreno.getX() == x && terreno.getY() == y){
-                return  terreno;
+    public Terreno getTerreno(int x, int y) {
+        for (Terreno t : terrenos) {
+            if (t.getX() == x && t.getY() == y) {
+                return t;
             }
         }
-        throw new Exception("Coordenadas fora do lismites do terrono");
+        return null;
     }
 
-    public void plantarBatata(int x, int y) throws Exception {
-        celeiro.consumirBatata();
-        getTerreno(x, y).plantar(new Batata(3));
+    public void plantarBatata(int x, int y){
+        Terreno t = getTerreno(x, y);
+        if(t != null){
+            celeiro.consumirBatata();
+            t.plantar(new Batata(3));
+        }
     }
 
-    public void plantarCenoura(int x, int y) throws Exception {
-        celeiro.consumirCenoura();
-        getTerreno(x, y).plantar(new Cenoura(3));
+    public void plantarCenoura(int x, int y) {
+        Terreno t = getTerreno(x, y);
+        if (t != null) {
+            celeiro.consumirCenoura();
+            t.plantar(new Cenoura(4));
+        }
     }
 
-    public void plantarMorango(int x, int y) throws Exception {
-        celeiro.consumirMorango();
-        getTerreno(x, y).plantar(new Morango(3));
+    public void plantarMorango(int x, int y) {
+        Terreno t = getTerreno(x, y);
+        if (t != null) {
+            celeiro.consumirMorango();
+            t.plantar(new Morango(5));
+        }
     }
 
-    public void colher(int x, int y) throws Exception {
-         getTerreno(x, y).colher(celeiro);
+    public void colher(int x, int y) {
+        Terreno t = getTerreno(x, y);
+        if (t != null) {
+            t.colher(this.celeiro);
+        }
     }
 
-    public Celeiro getCeleiro(){
-        return celeiro;
+    public void passarCiclo() {
+        for (Terreno t : terrenos) {
+            t.atualizarCiclo();
+        }
     }
 
+    public Celeiro getCeleiro() { return celeiro; }
+    public List<Terreno> getTerrenos() { return terrenos; }
 }

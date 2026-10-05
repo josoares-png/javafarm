@@ -1,64 +1,62 @@
 package br.com.joaocarloslima;
 
 public class Terreno {
-
     private Batata batata;
-    private Morango morango;
     private Cenoura cenoura;
-    private int x, y;
+    private Morango morango;
+    private int x;
+    private int y;
 
-    public Terreno(int x, int y) {
+    public Terreno(int x, int y){
         this.x = x;
         this.y = y;
     }
 
     public void plantar(Batata batata) {
-        if (!estaOcupado()) this.batata = batata;
+        if (estaOcupado()) throw new IllegalStateException("Ocupado");
+        this.batata = batata;
     }
 
     public void plantar(Cenoura cenoura) {
-        if (!estaOcupado()) this.cenoura = cenoura;
+        if (estaOcupado()) throw new IllegalStateException("Ocupado");
+        this.cenoura = cenoura;
     }
 
     public void plantar(Morango morango) {
-        if (!estaOcupado()) this.morango = morango;
+        if (estaOcupado()) throw new IllegalStateException("Ocupado");
+        this.morango = morango;
     }
 
-    public void colher(Celeiro celeiro) throws Exception {
-        if (batata != null && batata.podeColher()) {
+    public void colher(Celeiro celeiro){
+        if (!estaOcupado()) throw new IllegalStateException("Vazio");
+        if (batata != null) {
+            if (!batata.podeColher()) throw new IllegalStateException("Não maduro");
             celeiro.armazenarBatata();
-            batata = null;
-        } else if (cenoura != null && cenoura.podeColher()) {
+            this.batata = null;
+        } else if (cenoura != null) {
+            if (!cenoura.podeColher()) throw new IllegalStateException("Não maduro");
             celeiro.armazenarCenoura();
-            cenoura = null;
-        } else if (morango != null && morango.podeColher()) {
+            this.cenoura = null;
+        } else if (morango != null) {
+            if (!morango.podeColher()) throw new IllegalStateException("Não maduro");
             celeiro.armazenarMorango();
-            morango = null;
+            this.morango = null;
         }
-
     }
 
-    public boolean estaOcupado() {
+    public void atualizarCiclo() {
+        if (batata != null) batata.crescer();
+        if (cenoura != null) cenoura.crescer();
+        if (morango != null) morango.crescer();
+    }
+
+    public boolean estaOcupado(){
         return batata != null || cenoura != null || morango != null;
     }
 
-    public int getX() {
-        return x;
-    }
-
-    public int getY() {
-        return y;
-    }
-
-    public Batata getBatata() {
-        return batata;
-    }
-
-    public Morango getMorango() {
-        return morango;
-    }
-
-    public Cenoura getCenoura() {
-        return cenoura;
-    }
+    public int getX() { return x; }
+    public int getY() { return y; }
+    public Batata getBatata() { return batata; }
+    public Cenoura getCenoura() { return cenoura; }
+    public Morango getMorango() { return morango; }
 }

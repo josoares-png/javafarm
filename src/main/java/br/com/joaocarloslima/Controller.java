@@ -18,7 +18,7 @@ import javafx.scene.layout.GridPane;
 
 public class Controller implements Initializable {
 
-    // private Fazenda fazenda = new Fazenda();
+     private Fazenda fazenda = new Fazenda();
     private List<ImageView> imageTerrenos = new ArrayList<>();
     private int sleepTime = 3000;
 
@@ -36,11 +36,8 @@ public class Controller implements Initializable {
     ProgressBar ocupacaoDoCeleiro;
     @FXML
     CheckBox ckbAcelerar;
-    private Fazenda fazenda;
 
-
-    public void atualizar() throws Exception {
-
+     public void atualizar() {
          botaoBatata.setText("Batata x " + fazenda.getCeleiro().getQtdeBatatas());
          botaoCenoura.setText("Cenoura x " + fazenda.getCeleiro().getQtdeCenouras());
          botaoMorango.setText("Morango x " + fazenda.getCeleiro().getQtdeMorangos());
@@ -63,7 +60,7 @@ public class Controller implements Initializable {
          }
      }
 
-     public void ciclo() throws Exception {
+     public void ciclo() {
          for (int x = 0; x < 13; x++) {
              for (int y = 0; y < 13; y++) {
                  Terreno terreno = fazenda.getTerreno(x, y);
@@ -92,18 +89,10 @@ public class Controller implements Initializable {
              while (true) {
                  try {
                      Thread.sleep(sleepTime);
-                     Platform.runLater(() -> {
-                         try {
-                             ciclo();
-                         } catch (Exception e) {
-                             throw new RuntimeException(e);
-                         }
-                     });
+                     Platform.runLater(() -> ciclo());
                      atualizar();
                  } catch (InterruptedException e) {
                      e.printStackTrace();
-                 } catch (Exception e) {
-                     throw new RuntimeException(e);
                  }
              }
          });
@@ -136,7 +125,7 @@ public class Controller implements Initializable {
                      fazenda.plantarMorango(x, y);
                  if (botaoColher.isSelected())
                      fazenda.colher(x, y);
-    
+
                  atualizar();
 
             }catch(Exception ex){
@@ -148,12 +137,8 @@ public class Controller implements Initializable {
 
         });
 
-        try {
-            atualizar();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        clockThread();
+         atualizar();
+         clockThread();
 
     }
 
