@@ -36,8 +36,6 @@ public class Controller implements Initializable {
     ProgressBar ocupacaoDoCeleiro;
     @FXML
     CheckBox ckbAcelerar;
-    private Fazenda fazenda;
-
 
      public void atualizar() {
          botaoBatata.setText("Batata x " + fazenda.getCeleiro().getQtdeBatatas());
@@ -91,18 +89,10 @@ public class Controller implements Initializable {
              while (true) {
                  try {
                      Thread.sleep(sleepTime);
-                     Platform.runLater(() -> {
-                         try {
-                             ciclo();
-                         } catch (Exception e) {
-                             throw new RuntimeException(e);
-                         }
-                     });
+                     Platform.runLater(() -> ciclo());
                      atualizar();
                  } catch (InterruptedException e) {
                      e.printStackTrace();
-                 } catch (Exception e) {
-                     throw new RuntimeException(e);
                  }
              }
          });
@@ -147,12 +137,8 @@ public class Controller implements Initializable {
 
         });
 
-        try {
-            atualizar();
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-        clockThread();
+         atualizar();
+         clockThread();
 
     }
 

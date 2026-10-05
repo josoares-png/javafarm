@@ -5,34 +5,30 @@ public class Morango {
     private int tempoDeVida;
     private int tempoDeCrescimento;
 
-    public Morango(int tamanho){
-        this.tamanho = tamanho;
-        this.tempoDeVida = tempoDeVida;
-        this.tempoDeCrescimento = tempoDeCrescimento;
+    public Morango(int tempoDeVida){
+        this.tamanho = 1;
+        this.tempoDeVida = 1;
+        this.tempoDeCrescimento = tempoDeVida;
     }
 
     public void crescer(){
-        this.tamanho += 1;
-        this.tempoDeVida +=1;
+        this.tempoDeVida++;
+        if (this.tempoDeVida % this.tempoDeCrescimento == 0){
+            if (this.tamanho < 4){
+                this.tamanho++;
+            }
+        }
     }
 
-    public boolean podeColher() {
+    public boolean podeColher(){
         return this.tamanho == 4;
     }
 
     public String getImagem(){
-        return "imagem/morango" + tamanho + "png";
+        return "images/morango" + tamanho + ".png";
     }
 
-    public int getTamanho() {
-        return tamanho;
-    }
-
-    public int getTempoDeVida() {
-        return tempoDeVida;
-    }
-
-    public int getTempoDeCrescimento() {
-        return tempoDeCrescimento;
-    }
+    public int getTamanho(){return tamanho;}
+    public int getTempoDeVida(){return tempoDeVida;}
+    public int getTempoDeCrescimento(){return tempoDeCrescimento;}
 }

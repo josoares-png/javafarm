@@ -13,15 +13,18 @@ public class Terreno {
     }
 
     public void plantar(Batata batata) {
-        if (!estaOcupado()) this.batata = batata;
+        if (estaOcupado()) throw new IllegalStateException("Ocupado");
+        this.batata = batata;
     }
 
     public void plantar(Cenoura cenoura) {
-        if (!estaOcupado()) this.cenoura = cenoura;
+        if (estaOcupado()) throw new IllegalStateException("Ocupado");
+        this.cenoura = cenoura;
     }
 
     public void plantar(Morango morango) {
-        if (!estaOcupado()) this.morango = morango;
+        if (estaOcupado()) throw new IllegalStateException("Ocupado");
+        this.morango = morango;
     }
 
     public void colher(Celeiro celeiro){
@@ -41,13 +44,16 @@ public class Terreno {
         }
     }
 
+
     public void atualizarCiclo() {
         if (batata != null) batata.crescer();
         if (cenoura != null) cenoura.crescer();
         if (morango != null) morango.crescer();
     }
 
-    
+    public boolean estaOcupado(){
+        return batata != null || cenoura != null || morango != null;
+    }
 
     public int getX() { return x; }
     public int getY() { return y; }

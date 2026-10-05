@@ -6,11 +6,11 @@ public class Celeiro {
     private int qtdeCenouras;
     private int qtdeMorangos;
 
-    public Celeiro(int capacidade) {
+    public Celeiro(int capacidade){
         this.capacidade = capacidade;
-        this.qtdeBatatas = 0;
-        this.qtdeCenouras = 0;
-        this.qtdeMorangos = 0;
+        this.qtdeBatatas = 5;
+        this.qtdeCenouras = 5;
+        this.qtdeMorangos = 5;
     }
 
     public void armazenarBatata() {
@@ -55,34 +55,21 @@ public class Celeiro {
         this.qtdeMorangos--;
     }
 
-    public int getEspacoDisponivel() {
+    public int getEspacoDisponivel(){
         return capacidade - (qtdeBatatas + qtdeCenouras + qtdeMorangos);
     }
 
-    public int getOcupacao() {
+    public int getOcupacao(){
         int totalOcupado = qtdeBatatas + qtdeCenouras + qtdeMorangos;
-        return (totalOcupado / capacidade) * 100;
+        return (totalOcupado/capacidade) * 100;
     }
 
     public boolean celeiroCheio(){
-        return getOcupacao() <=0;
+        return (qtdeBatatas + qtdeCenouras + qtdeMorangos) >= capacidade;
     }
 
-    public int getCapacidade() {
-        return capacidade;
-    }
-
-    public int getQtdeBatatas() {
-        return qtdeBatatas;
-    }
-
-    public int getQtdeCenouras() {
-        return qtdeCenouras;
-    }
-
-    public int getQtdeMorangos() {
-        return qtdeMorangos;
-    }
-
-
+    public int getCapacidade(){return capacidade;}
+    public int getQtdeBatatas(){return qtdeBatatas;}
+    public int getQtdeCenouras(){return qtdeCenouras;}
+    public int getQtdeMorangos(){return qtdeMorangos;}
 }
