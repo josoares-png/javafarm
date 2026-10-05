@@ -5,27 +5,23 @@ public class Batata {
     private int tempoDeVida;
     private int tempoDeCrescimento;
 
-    public Batata(int tempoDeVida) {
-        this.tamanho = 1;
-        this.tempoDeVida = 1;
-        this.tempoDeCrescimento = tempoDeVida;
+    public Batata(int tamanho){
+        this.tamanho = tamanho;
+        this.tempoDeVida = tempoDeVida;
+        this.tempoDeCrescimento = tempoDeCrescimento;
     }
 
-    public void crescer() {
-        this.tempoDeVida++;
-        if (this.tempoDeVida % this.tempoDeCrescimento == 0) {
-            if (this.tamanho < 4) {
-                this.tamanho++;
-            }
-        }
+    public void crescer(){
+        this.tamanho += 1;
+        this.tempoDeVida +=1;
     }
 
     public boolean podeColher() {
         return this.tamanho == 4;
     }
 
-    public String getImagem() {
-        return "images/batata" + tamanho + ".png";
+    public String getImagem(){
+        return "imagem/batata" + tamanho + "png";
     }
 
     public int getTamanho() {

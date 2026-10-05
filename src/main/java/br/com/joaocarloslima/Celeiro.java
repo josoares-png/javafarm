@@ -8,9 +8,9 @@ public class Celeiro {
 
     public Celeiro(int capacidade) {
         this.capacidade = capacidade;
-        this.qtdeBatatas = 5;
-        this.qtdeCenouras = 5;
-        this.qtdeMorangos = 5;
+        this.qtdeBatatas = 0;
+        this.qtdeCenouras = 0;
+        this.qtdeMorangos = 0;
     }
 
     public void armazenarBatata() {
@@ -64,8 +64,8 @@ public class Celeiro {
         return (totalOcupado / capacidade) * 100;
     }
 
-    public boolean celeiroCheio() {
-        return (getQtdeBatatas() + getQtdeMorangos() +getQtdeCenouras() >= getCapacidade());
+    public boolean celeiroCheio(){
+        return getOcupacao() <=0;
     }
 
     public int getCapacidade() {

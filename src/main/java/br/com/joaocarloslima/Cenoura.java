@@ -5,19 +5,15 @@ public class Cenoura {
     private int tempoDeVida;
     private int tempoDeCrescimento;
 
-    public Cenoura(int tempoDeVida){
-        this.tamanho = 1;
-        this.tempoDeVida = 1;
-        this.tempoDeCrescimento = tempoDeVida;
+    public Cenoura(int tamanho){
+        this.tamanho = tamanho;
+        this.tempoDeVida = tempoDeVida;
+        this.tempoDeCrescimento = tempoDeCrescimento;
     }
 
     public void crescer(){
-        this.tempoDeVida++;
-        if (this.tempoDeVida % this.tempoDeCrescimento == 0){
-            if (this.tamanho < 4){
-                this.tamanho++;
-            }
-        }
+        this.tamanho += 1;
+        this.tempoDeVida +=1;
     }
 
     public boolean podeColher(){
@@ -25,7 +21,7 @@ public class Cenoura {
     }
 
     public String getImagem(){
-        return "images/cenoura" + tamanho + ".png";
+        return "imagem/cenoura" + tamanho + "png";
     }
 
     public int getTamanho(){return tamanho;}

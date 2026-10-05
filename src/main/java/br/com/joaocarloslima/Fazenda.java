@@ -27,28 +27,23 @@ public class Fazenda {
         return null;
     }
 
-    public void plantarBatata(int x, int y){
-        Terreno t = getTerreno(x, y);
-        if(t != null){
-            celeiro.consumirBatata();
-            t.plantar(new Batata(3));
-        }
+    public void plantarBatata(int x, int y) throws Exception {
+        celeiro.consumirBatata();
+        getTerreno(x, y).plantar(new Batata(3));
     }
 
-    public void plantarCenoura(int x, int y) {
-        Terreno t = getTerreno(x, y);
-        if (t != null) {
-            celeiro.consumirCenoura();
-            t.plantar(new Cenoura(4));
-        }
+    public void plantarCenoura(int x, int y) throws Exception {
+        celeiro.consumirCenoura();
+        getTerreno(x, y).plantar(new Cenoura(3));
     }
 
-    public void plantarMorango(int x, int y) {
-        Terreno t = getTerreno(x, y);
-        if (t != null) {
-            celeiro.consumirMorango();
-            t.plantar(new Morango(5));
-        }
+    public void plantarMorango(int x, int y) throws Exception {
+        celeiro.consumirMorango();
+        getTerreno(x, y).plantar(new Morango(3));
+    }
+
+    public void colher(int x, int y) throws Exception {
+         getTerreno(x, y).colher(celeiro);
     }
 
     public void colher(int x, int y) {
